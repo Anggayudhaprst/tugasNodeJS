@@ -1,10 +1,11 @@
 const mysql = require('mysql');
 
+//isi host / user / password / database dengan local mysql
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: 'root',
-  password: 'root123',
-  database: 'Ashtray',
+  user: 'your_username',
+  password: 'your_password',
+  database: 'your_database',
 });
 
 connection.connect((err) => {

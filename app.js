@@ -19,9 +19,11 @@ var app = express();
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+// isi databaseService.getUserByUsername / databaseService.getUserById dengan local mysql
 passport.use(new LocalStrategy(async (username, password, done) => {
   try {
-    const user = await databaseService.getUserByUsername(root);
+    const user = await databaseService.getUserByUsername(your_username);
     if (!user) {
       return done(null, false, { message: 'Invalid username or password' });
     }
@@ -43,7 +45,7 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser(async (id, done) => {
   try {
-    const user = await databaseService.getUserById(id);
+    const user = await databaseService.getUserById(your_id);
     done(null, user);
   } catch (error) {
     done(error);
